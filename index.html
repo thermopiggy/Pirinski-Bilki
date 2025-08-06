@@ -111,20 +111,46 @@
     #logo-section img {
       border-radius: 20px;
     }
+.nav-toggle {
+  display: none;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #6b8e23cc;
+    padding: 1em;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
 
   </style>
 </head>
 <body>
   <nav>
-    <div class="nav-left">
-      <a href="#hero"><img src="logo.png" alt="лого"></a>
-      <a href="#hero">Начало</a>
-      <a href="#about">За нас</a>
-      <a href="#contact">Контакт</a>
-      <a href="#bilki">Билки</a>
-      <a href="#yadki">Ядки</a>
-      <a href="#plodove">Плодове</a>
-    </div>
+  <div class="nav-toggle" id="nav-toggle">☰</div>
+<div class="nav-links" id="nav-links">
+  <a href="#logo-section">Начало</a>
+  <a href="#about">За нас</a>
+  <a href="#contact">Контакт</a>
+  <a href="#bilki">Билки</a>
+  <a href="#yadki">Ядки</a>
+  <a href="#plodove">Плодове</a>
+  <a href="#" id="toggle-cart">🛒 Кошница</a>
+</div>
+
     <a href="#" id="toggle-cart">🛒 Кошница</a>
 
   </nav>
@@ -216,6 +242,12 @@ const cart = document.getElementById('cart');
 toggleCartBtn.addEventListener('click', (e) => {
   e.preventDefault();
   cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
+});
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
 });
 
   </script>
