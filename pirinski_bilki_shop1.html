@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ПЛАНИНСКИ БИЛКИ - ДАУТОВ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Bulgarian_Pirin_mountain_coniferous_forest.jpg/1280px-Bulgarian_Pirin_mountain_coniferous_forest.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    nav {
+      background: #6b8e23cc;
+      padding: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+    .nav-left img {
+      height: 50px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 1em;
+    }
+    .container {
+      padding: 2em;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin-bottom: 2em;
+      background: white;
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+    }
+    .product img {
+      width: 150px;
+      height: auto;
+    }
+    .product-details {
+      max-width: 600px;
+    }
+    .price {
+      font-weight: bold;
+      margin: 0.5em 0;
+    }
+    .button {
+      padding: 0.5em 1em;
+      background: #6b8e23;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #cart {
+      position: fixed;
+      top: 1em;
+      right: 1em;
+      background: white;
+      padding: 1em;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    #cart h3 {
+      margin-top: 0;
+    }
+    #hero {
+      text-align: center;
+      padding: 3em 1em;
+    }
+    #hero img {
+      width: 80%;
+      max-width: 600px;
+    }
+    #about, #contact {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2em;
+      margin-top: 2em;
+    }
+    @media (max-width: 768px) {
+      .product {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <a href="#hero"><img src="logo.png" alt="лого"></a>
+      <a href="#hero">Начало</a>
+      <a href="#about">За нас</a>
+      <a href="#contact">Контакт</a>
+      <a href="#bilki">Билки</a>
+      <a href="#yadki">Ядки</a>
+      <a href="#plodove">Плодове</a>
+    </div>
+  </nav>
+
+  <div id="cart">
+    <h3>Кошница</h3>
+    <ul id="cart-items"></ul>
+    <p><strong>Общо:</strong> <span id="cart-total">0.00</span> лв</p>
+  </div>
+
+  <div id="hero">
+    <img src="logo.png" alt="лого на цял екран">
+  </div>
+
+  <div class="container">
+    <div id="bilki"></div>
+    <div class="product"><img src="shipki.png"><div class="product-details"><h2>Шипки</h2><p>Богати на витамин C, използват се за чай и сиропи.</p><p class="price">100g - 3.50 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="мечо.png"><div class="product-details"><h2>Мечо грозде</h2><p>Използва се при бъбречни проблеми и има диуретично действие.</p><p class="price">50g - 4.00 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="koteshka.png"><div class="product-details"><h2>Котешка стъпка</h2><p>Подпомага имунитета и се използва за настойки и чай.</p><p class="price">30g - 4.50 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="rigan.png"><div class="product-details"><h2>Риган</h2><p>Ароматна билка за подправка и чай с антисептично действие.</p><p class="price">50g - 2.80 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="hvojna.png"><div class="product-details"><h2>Плод хвойна</h2><p>Подобрява храносмилането и се използва в народната медицина.</p><p class="price">60g - 3.60 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="magareshki.png"><div class="product-details"><h2>Магарешки трън</h2><p>Подпомага чернодробната функция и се използва при детоксикация.</p><p class="price">80g - 5.20 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="мащерка.png"><div class="product-details"><h2>Мащерка</h2><p>Успокоява кашлица, антисептик и ароматна подправка.</p><p class="price">40g - 2.50 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div class="product"><img src="кантарион.png"><div class="product-details"><h2>Жълт кантарион</h2><p>Известен с антидепресивно и противовъзпалително действие.</p><p class="price">30g - 3.90 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div id="yadki"></div>
+    <div class="product"><img src="кестен.png"><div class="product-details"><h2>Кестен ядлив</h2><p>Богат на нишесте, витамин C и минерали. Подходящ за печене.</p><p class="price">500g - 6.00 лв</p><button class="button">Добави в кошницата</button></div></div>
+    <div id="plodove"></div>
+    <div class="product"><img src="chereshi.png"><div class="product-details"><h2>Сушени череши</h2><p>Естествено сладки и богати на антиоксиданти. Подходящи за директна консумация.</p><p class="price">150g - 4.90 лв</p><button class="button">Добави в кошницата</button></div></div>
+  </div>
+
+  <div id="about">
+    <h2>За нас</h2>
+    <p>Планински билки Даутов е семейна инициатива с мисия да предостави чисти, ръчно събирани билки от сърцето на Пирин.</p>
+  </div>
+
+  <div id="contact">
+    <h2>Контакт</h2>
+    <p>📧 Еmail: <a href="mailto:daoutov@pirinski-bilki.bg">daoutov@pirinski-bilki.bg</a></p>
+    <p>📞 Телефон: <a href="tel:+359888123456">+359 888 123 456</a></p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.button');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    let total = 0;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const product = btn.parentElement;
+        const name = product.querySelector('h2').innerText;
+        const priceText = product.querySelector('.price').innerText;
+        const matches = priceText.match(/([\d\.]+)/g);
+        const price = parseFloat(matches[1]);
+
+        const li = document.createElement('li');
+        li.textContent = name + ' - ' + price.toFixed(2) + ' лв';
+        cartItems.appendChild(li);
+
+        total += price;
+        cartTotal.textContent = total.toFixed(2);
+      });
+    });
+  </script>
+</body>
+</html>
