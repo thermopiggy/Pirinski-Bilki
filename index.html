@@ -119,6 +119,17 @@
     <h3>Кошница</h3>
     <ul id="cart-items"></ul>
     <p><strong>Общо:</strong> <span id="cart-total">0.00</span> лв</p>
+    <a id="whatsapp-order" href="#" target="_blank" style="
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 1em;
+">Поръчай в WhatsApp</a>
+
   </div>
 
   <div id="hero">
@@ -174,6 +185,33 @@
         cartTotal.textContent = total.toFixed(2);
       });
     });
+    const whatsappBtn = document.getElementById('whatsapp-order');
+let orderList = [];
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const product = btn.parentElement;
+    const name = product.querySelector('h2').innerText;
+    const priceText = product.querySelector('.price').innerText;
+    const matches = priceText.match(/([\d\.]+)/g);
+    const price = parseFloat(matches[1]);
+
+    const li = document.createElement('li');
+    li.textContent = name + ' - ' + price.toFixed(2) + ' лв';
+    cartItems.appendChild(li);
+
+    total += price;
+    cartTotal.textContent = total.toFixed(2);
+    orderList.push(`${name} - ${price.toFixed(2)} лв`);
+  });
+});
+
+whatsappBtn.addEventListener('click', () => {
+  const number = '+359988823462';
+  const message = encodeURIComponent('Здравейте! Бих искал да поръчам:\n' + orderList.join('\n') + `\nОбщо: ${total.toFixed(2)} лв`);
+  whatsappBtn.href = `https://wa.me/${number.replace('+', '')}?text=${message}`;
+});
+
   </script>
 </body>
 </html>
