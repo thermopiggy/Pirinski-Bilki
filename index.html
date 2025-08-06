@@ -190,7 +190,7 @@
         const product = btn.parentElement;
         const name = product.querySelector('h2').innerText;
         const priceText = product.querySelector('.price').innerText;
-        const price = parseFloat(priceText.match(/([\d\.]+)/)[0]);
+         const matches = priceText.match(/([\d\.]+)/g);
 
         const li = document.createElement('li');
         li.textContent = name + ' - ' + price.toFixed(2) + ' лв';
