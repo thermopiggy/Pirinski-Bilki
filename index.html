@@ -68,16 +68,22 @@
       border: none;
       cursor: pointer;
     }
-    #cart {
-      position: fixed;
-      top: 1em;
-      right: 1em;
-      background: white;
-      padding: 1em;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
+ #cart {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  background: white;
+  padding: 1em;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 2000;          /* над нав бара */
+  max-width: 320px;       /* не излиза хоризонтално */
+  max-height: 80vh;       /* не излиза вертикално */
+  overflow-y: auto;       /* вътрешен скрол при много продукти */
+  box-sizing: border-box;
+  display: none;          /* по подразбиране скрита */
+}
+
     #cart h3 {
       margin-top: 0;
     }
@@ -174,6 +180,22 @@ body {
   overflow-y: auto;     /* скрол, ако има твърде много продукти */
   box-sizing: border-box;
 }
+/* ляв блок да бута съдържанието надясно */
+.nav-left { display:flex; align-items:center; gap:1em; flex:1; }
+
+/* мобилни настройки */
+@media (max-width: 768px) {
+  .nav-toggle { display:block; }
+  nav { flex-direction: row; align-items: center; justify-content: space-between; } /* ☰ вляво, 🛒 вдясно */
+  .nav-links { 
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #6b8e23cc;
+    padding: 1em;
+  }
+  .nav-links.active { display: flex; }
+}
 
   </style>
 </head>
@@ -197,25 +219,13 @@ body {
 
 
   <div id="cart">
-    <button id="close-cart" style="
-    float:right;
-    background:none;
-    border:none;
-    font-size:1.2em;
-    cursor:pointer;
-    <h3>Кошница</h3>
-    <ul id="cart-items"></ul>
-    <p><strong>Общо:</strong> <span id="cart-total">0.00</span> лв</p>
-    <a id="whatsapp-order" href="#" target="_blank" style="
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  margin-top: 1em;
-">Поръчай в WhatsApp</a>
+  <button id="close-cart" style="position:sticky; top:0; float:right; background:none; border:none; font-size:1.2em; cursor:pointer;">✖</button>
+  <h3>Кошница</h3>
+  <ul id="cart-items"></ul>
+  <p><strong>Общо:</strong> <span id="cart-total">0.00</span> лв</p>
+  <a id="whatsapp-order" href="#" target="_blank" style="display:inline-block; background:#25D366; color:white; padding:0.5em 1em; text-decoration:none; font-weight:bold; border-radius:4px; margin-top:1em;">Поръчай в WhatsApp</a>
+</div>
+
 
   </div>
 
