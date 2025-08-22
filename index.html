@@ -163,23 +163,25 @@ body {
   }
   .nav-links.active { display: flex; }
 }
-/* замени целия #cart с това */
 #cart{
   position: fixed;
-  top: 12px;
-  right: env(safe-area-inset-right, 8px);
+  top: 88px;                 /* под фиксирания навбар (~80px) */
+  right: 12px;
   left: auto;
   background: #fff;
   padding: 12px;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0,0,0,.2);
   z-index: 2000;
-  width: min(92vw, 360px);   /* ключово: винаги в екрана */
-  max-height: 80vh;          /* и по височина */
-  overflow-y: auto;
+  max-width: calc(100vw - 24px);   /* никога извън екрана хоризонтално */
+  max-height: calc(100vh - 100px); /* и вертикално */
+  overflow: auto;
   box-sizing: border-box;
   display: none;
-  overflow-wrap: anywhere;    /* ако се появят дълги низове */
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px){
+  #cart{ left: 8px; right: 8px; max-width: none; }
 }
 
 /* за много тесни екрани */
@@ -190,11 +192,6 @@ body {
     width: calc(100vw - 16px);
     max-height: 82vh;
   }
-}
-#cart {
-  /* ... останалите стилове ... */
-  right: 0;             /* държи я максимално вдясно */
-  margin-right: 12px;   /* леко навътре, за да не излиза */
 }
 
   </style>
@@ -225,9 +222,6 @@ body {
   <p><strong>Общо:</strong> <span id="cart-total">0.00</span> лв</p>
   <a id="whatsapp-order" href="#" target="_blank" style="display:inline-block; background:#25D366; color:white; padding:0.5em 1em; text-decoration:none; font-weight:bold; border-radius:4px; margin-top:1em;">Поръчай в WhatsApp</a>
 </div>
-
-
-  </div>
 
   <div id="hero">
     <img src="logo.png" alt="лого на цял екран">
@@ -299,7 +293,8 @@ const cart = document.getElementById('cart');
 
 toggleCartBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  cart.style.display = cart.style.display === 'none' ? 'block' : 'none';
+cart.style.display = getComputedStyle(cart).display === 'none' ? 'block' : 'none';
+
 });
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
