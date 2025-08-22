@@ -160,6 +160,20 @@ body {
   background: url('...') no-repeat center center fixed;
   background-size: cover;
 }
+#cart {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  background: white;
+  padding: 1em;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  max-width: 320px;     /* ограничаваме ширината */
+  max-height: 80vh;     /* да не надвишава височината на екрана */
+  overflow-y: auto;     /* скрол, ако има твърде много продукти */
+  box-sizing: border-box;
+}
 
   </style>
 </head>
@@ -255,6 +269,7 @@ buttons.forEach(btn => {
     total += price;
     cartTotal.textContent = total.toFixed(2);
     orderList.push(`${name} - ${price.toFixed(2)} лв`);
+     cart.style.display = 'block';
   });
 });
 
