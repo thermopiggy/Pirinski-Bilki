@@ -331,9 +331,7 @@ cart.style.display = getComputedStyle(cart).display === 'none' ? 'block' : 'none
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+
 const closeCartBtn = document.getElementById('close-cart');
 closeCartBtn.addEventListener('click', () => {
   cart.style.display = 'none';
