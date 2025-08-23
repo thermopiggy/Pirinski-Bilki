@@ -209,6 +209,31 @@ body {
   .product img { max-width: 100%; height: auto; }
   .product-details table th, .product-details table td { word-break: break-word; }
 }
+/* Десктоп компоновка: по-дълги редове, по-компактни карти */
+@media (min-width: 992px){
+  .container{
+    max-width: 1100px;   /* центрира и ограничава ширината */
+    margin: 0 auto;
+    padding: 2em 1em;
+  }
+  .product{
+    align-items: flex-start;  /* спира вертикалното „разтягане“ */
+    gap: 24px;
+  }
+  .product img{
+    flex: 0 0 180px;     /* фиксирана колонка за снимката */
+    width: 180px;
+    height: auto;
+  }
+  .product-details{
+    flex: 1;             /* текстът заема останалото място */
+    max-width: 800px;    /* по-дълги, но по-малко на брой редове */
+  }
+  /* ограничаваме само описателния текст, не цената/таблицата */
+  .product-details p:not(.price){
+    max-width: 68ch;     /* оптимална дължина на ред (~60–75 знака) */
+  }
+}
 
   </style>
 </head>
